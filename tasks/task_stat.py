@@ -4,16 +4,13 @@ from collections import Counter
 def stat(numbers: list) -> list:
     # (1) - Total amount of received integers.
     total_numbers_count = len(numbers)
-    print('Total amount of received integers: ', total_numbers_count)
 
     # (2) - Total amount of different values the array has.
     unique_numbers_count = len(set(numbers))
-    print('Total amount of different values the array has: ', unique_numbers_count)
 
     # (3) - Total amount of values that occur only once.
     count_num_occurrence = Counter(numbers)  # Count occurrences of each element
     total_once_occurred_count = len([num for num, count in count_num_occurrence.items() if count == 1])
-    print('Total amount of values that occur only once: ', total_once_occurred_count)
 
     # (4) - It is (or they are) the element(s) that has (or have) the maximum occurrence.
     # If there are more than one, the elements should be sorted (by their value obviously)
@@ -21,11 +18,8 @@ def stat(numbers: list) -> list:
     most_occurred_numbers = [num for num, count in count_num_occurrence.items() if count == max_occurrence]
     sorted_most_occurred_numbers = sorted(most_occurred_numbers)
 
-    print('The element(s) that has(have) the maximum occurrence: ', sorted_most_occurred_numbers)
-
     # (5) - Maximum occurrence of the integer(s)
     max_count_of_integer = [count for num, count in count_num_occurrence.items() if count == max_occurrence]
-    print('Maximum occurrence of the integer(s): ', max_count_of_integer)
 
     return [total_numbers_count, unique_numbers_count,
             total_once_occurred_count, sorted_most_occurred_numbers,
