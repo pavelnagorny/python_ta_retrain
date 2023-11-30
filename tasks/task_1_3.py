@@ -17,8 +17,7 @@ def to_hours(minutes) -> float:
     :return: The equivalent number of minutes.
     :rtype: float
     """
-    hours = minutes / 60.0
-    return round(hours, 4)
+    return round((minutes / 60.0), 4)
 
 
 def is_whole_div(dividend, divisor) -> bool:
