@@ -20,4 +20,4 @@ def process_chunks(input_string, n):
         return ""
 
     chunks = [input_string[i:i + n] for i in range(0, len(input_string), n) if len(input_string[i:i + n]) == n]
-    return "".join([transform_chunk(chunk) for chunk in chunks])
+    return "".join(map(transform_chunk, chunks))
