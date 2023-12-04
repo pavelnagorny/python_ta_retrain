@@ -1,14 +1,7 @@
+from helpers.custom_exceptions import (NonIntegerError, AlphaNumericError, StringLengthError, NegativeError)
+
+
 def transform_chunk(chunk):
-    """
-        Transform a chunk of digits based on the sum of cubes of its digits.
-
-        Parameters:
-        - chunk (str): A string representing a chunk of digits.
-
-        Returns:
-        str: Transformed chunk based on the sum of cubes of its digits.
-             If the sum is even, the chunk is reversed; otherwise, the first digit is moved to the end.
-    """
     if sum(int(digit) ** 3 for digit in chunk) % 2 == 0:
         return chunk[::-1]
     else:
@@ -16,8 +9,19 @@ def transform_chunk(chunk):
 
 
 def process_chunks(input_string, n):
-    if n <= 0 or n > len(input_string):
-        return ""
+    try:
+        if not isinstance(n, int):
+            raise NonIntegerError(parameter="n")
+        if isinstance(input_string, int) or not input_string.isdigit():
+            raise AlphaNumericError(parameter="input_string")
+        if len(input_string) < n:
+            raise StringLengthError(parameter="input_string")
+        if n <= 0:
+            raise NegativeError(parameter="n")
 
-    chunks = [input_string[i:i + n] for i in range(0, len(input_string), n) if len(input_string[i:i + n]) == n]
-    return "".join(map(transform_chunk, chunks))
+        chunks = [input_string[i:i + n] for i in range(0, len(input_string), n) if len(input_string[i:i + n]) == n]
+        return "".join(map(transform_chunk, chunks))
+    except (AlphaNumericError, NonIntegerError) as e:
+        return f"ERROR: {e}"
+    except (StringLengthError, NegativeError) as er:
+        return f"ERROR: {er}"

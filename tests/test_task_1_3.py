@@ -22,7 +22,11 @@ def test_to_hours(minutes, expected_hours):
 
 # Test cases for is_whole_div function
 @pytest.mark.parametrize("dividend, divisor, expected_result", [(10, 2, True), (10, 3, False),
-                                                                (0, 5, True), (-15, 3, True)
+                                                                (0, 5, True), (-15, 3, True),
+                                                                ("6", 3, "ERROR: Input should be an integer."),
+                                                                (4, "2", "ERROR: Input should be an integer."),
+                                                                (8, 0, "ERROR: Divisor should not be equal to 0."),
+                                                                (7, 3.5, "ERROR: Input should be an integer.")
                                                                 ])
 def test_is_whole_div(dividend, divisor, expected_result):
     result = is_whole_div(dividend, divisor)
