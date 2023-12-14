@@ -1,3 +1,6 @@
+from helpers.custom_exceptions import (NonIntegerError, DivisionByZero)
+
+
 def to_minutes(hours) -> int:
     """
     Convert hours to minutes.
@@ -29,4 +32,12 @@ def is_whole_div(dividend, divisor) -> bool:
     :return: True if the division results in a whole number, False otherwise.
     :rtype: bool
     """
-    return dividend % divisor == 0
+
+    try:
+        if not isinstance(dividend, int) or not isinstance(divisor, int):
+            raise NonIntegerError
+        if divisor == 0:
+            raise DivisionByZero
+        return dividend % divisor == 0
+    except (NonIntegerError, DivisionByZero) as er:
+        return f"ERROR: {er}"
