@@ -44,3 +44,8 @@ class NegativeError(Exception):
     """Raised when n is not an integer."""
     def __init__(self, parameter):
         super().__init__(f"{parameter} should be a positive integer.")
+
+
+class InvalidInputFormat(Exception):
+    """Invalid input format"""
+    pass
