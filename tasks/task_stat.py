@@ -1,6 +1,8 @@
 from collections import Counter
+from utils.decorators import log_execution_time
 
 
+@log_execution_time
 def stat(numbers: list) -> list:
     # (1) - Total amount of received integers.
     total_numbers_count = len(numbers)

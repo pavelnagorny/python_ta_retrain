@@ -1,4 +1,5 @@
 from helpers.custom_exceptions import *
+from utils.decorators import log_execution_time
 
 
 class Answer:
@@ -7,6 +8,7 @@ class Answer:
         self.age = age
         self.city = city
 
+    @log_execution_time
     def answer(self):
         print(f'HELLO, {self.name}')
         print(f'YOUR AGE IS {self.age}')
