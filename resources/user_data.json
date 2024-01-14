@@ -1,0 +1,23 @@
+[
+  {
+    "name": "John Doe",
+    "age": 30,
+    "city": "Exampleville",
+    "is_student": false,
+    "grades": [85, 90, 78]
+  },
+  {
+    "name": "Jane Smith",
+    "age": 25,
+    "city": "Testington",
+    "is_student": true,
+    "grades": [92, 88, 95]
+  },
+  {
+    "name": "Bob Johnson",
+    "age": 35,
+    "city": "Sampleburg",
+    "is_student": false,
+    "grades": [78, 82, 80]
+  }
+]
